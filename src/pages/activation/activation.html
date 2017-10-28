@@ -1,0 +1,36 @@
+<ion-header>
+    <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title color="secondary" >
+      Activate your Account
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+ <ion-card>
+
+  <ion-card-header color="primary">
+    How to Activate your Account
+  </ion-card-header>
+  <ion-card-content>
+  <ion-list>
+    <ion-item no-lines>1. Click the  <button padding  ion-button color="primary">Activate Account</button> button.</ion-item>
+    <ion-item no-lines>2. You'll be prompted to pay <strong>100</strong> to Paybill number<strong> 715423</strong></ion-item>
+    <ion-item no-lines>3. Complete the transaction by enterring your PIN.</ion-item>
+    <ion-item no-lines>4. Your account will be automatically activated</ion-item>
+  </ion-list>
+  </ion-card-content>
+
+    <ion-card-content text-right>
+     <button (click)="activateAccount()" ion-button color="primary" >Activate Account</button>
+  </ion-card-content>
+
+</ion-card>
+
+
+</ion-content>

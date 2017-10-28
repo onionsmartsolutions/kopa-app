@@ -1,0 +1,43 @@
+
+page-register {
+  .register-bg {
+  	font-family: Arial;
+  	background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  	padding: 50px;
+  }
+
+
+  .page-logo{
+  	background:transparent;
+  }
+
+  .item-transparent{
+    background: transparent;
+    color: #fff;
+  }
+
+  .btn-primary{
+    background: #9FD356;
+    color: #fff;
+  }
+
+  .text-secondary{
+     color:#9FD356;
+  }
+
+  .text-white{
+    color:#fff;
+  }
+  .round{
+    border-radius: 15px;
+    border: solid white;
+  }
+  .center{
+     margin: auto;
+     display: block;
+  }
+  .error-msg{
+    color:orange;
+  }
+
+}

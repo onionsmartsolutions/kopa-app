@@ -1,0 +1,71 @@
+
+
+<ion-header>
+    <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title color="secondary" >
+      Profile
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+ 
+ <ion-content  padding scroll="true">
+  <form  (ngSubmit)="saveProfile()">
+
+   <ion-list>
+
+    <ion-row>
+      <ion-col>
+         <ion-item no-lines>
+          <ion-label  floating><ion-icon name="contact" padding-right></ion-icon> First Name </ion-label> 
+           <ion-input  type="text" [(ngModel)]="first_name" name="first_name"   ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item no-lines>
+        <ion-label  floating><ion-icon name="contact" padding-right></ion-icon> Last Name </ion-label> 
+         <ion-input  type="text" [(ngModel)]="last_name" name="last_name"   ></ion-input>
+      </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+      
+
+      <ion-item>
+        <ion-label  floating><ion-icon name="mail" padding-right></ion-icon> Email (Contact Admin to change) </ion-label> 
+         <ion-input  disabled="true" type="email"  [(ngModel)]="email" name="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  floating><ion-icon name="call" padding-right></ion-icon> Phone Number(Contact Admin to change) </ion-label> 
+         <ion-input disabled="true" type="text"  [(ngModel)]="phone_no" name="phone_no"></ion-input>
+      </ion-item>
+
+       <ion-item>
+        <ion-label  floating><ion-icon name="card" padding-right></ion-icon> National ID (Contact Admin to change) </ion-label> 
+         <ion-input disabled="true" required  type="number"  [(ngModel)]="national_id" name="national_id"></ion-input>
+      </ion-item>
+
+      <ion-item >
+        <ion-label  floating><ion-icon name="map" padding-right></ion-icon>
+          Residence </ion-label> 
+         <ion-input  type="text"  [(ngModel)]="residence" name="residence"></ion-input>
+
+      </ion-item>
+
+
+  
+      <ion-item margin-bottom class="item-transparent" no-lines></ion-item>
+      <button type="submit" padding margin-top  ion-button full round>Save Profile</button>
+
+   </ion-list>
+    
+
+  </form>
+
+
+</ion-content>

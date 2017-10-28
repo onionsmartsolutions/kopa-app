@@ -1,0 +1,17 @@
+diff a/app/src/app/app.module.ts b/app/src/app/app.module.ts	(rejected hunks)
+@@ -62,9 +62,15 @@
+     MyApp,
+     HomePage,
+     LoginPage,
++<<<<<<< HEAD
+     ApplyPage,
+     RegisterPage,
+     ActivationPage
++=======
++    WelcomePage,
++    RegisterPage,
++	HomePage
++>>>>>>> 331ea0ff88066a21cb4cbd0daec68c2e5f5bbc32
+   ],
+   providers: [
+     StatusBar,

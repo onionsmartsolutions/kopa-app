@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title color="secondary" >
+      Applied Loans
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+<ion-card *ngFor="let loan of loans">
+  <ion-card-header  color="primary">
+    Loan # {{loan.loan_id}}
+  </ion-card-header>
+  <ion-card-content>
+     <p>Due Date: {{loan.dueDate}} </p>
+     <p>Loan Amount: {{loan.loanAmount}}</p>
+     <p>Loan Balance: {{loan.loanBalance}}</p>
+     <p>Loan Status: {{loan.status}}</p>
+     
+  </ion-card-content>
+
+<ion-row>
+  <ion-col>
+  <button ion-button full round icon-right color="secondary" left (click)="viewSettlements(loan)">PAYMENT HISTORY
+  <ion-icon name="timer"></ion-icon></button>
+  </ion-col>
+  <ion-col>
+    <button ion-button  full round  icon-right color="primary" (click)="settleLoan(loan)">SETTLE LOAN <ion-icon  name="cash"></ion-icon></button>
+  </ion-col>
+</ion-row>
+
+</ion-card>
+
+ <ion-fab bottom right>
+    <button ion-fab mini (click)="applyLoan()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

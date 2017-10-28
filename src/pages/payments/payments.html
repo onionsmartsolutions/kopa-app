@@ -1,0 +1,28 @@
+<ion-header>
+    <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title color="secondary" >
+      Settlements for Loan
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+<ion-card *ngFor="let settlement of settlements">
+  <ion-card-header  color="primary">
+    Settlement # {{settlement.settlement_id}}
+  </ion-card-header>
+  <ion-card-content>
+     <p>Loan #: {{settlement.loan_id}} </p>
+     <p>Transaction Date: {{settlement.date}}</p>
+     <p>Reference: {{settlement.reference}}</p>
+     <p>Verification Status: {{settlement.status}}</p>
+  </ion-card-content>
+  </ion-card>
+
+</ion-content>

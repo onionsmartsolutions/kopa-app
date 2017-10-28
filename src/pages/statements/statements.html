@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title color="secondary" >
+      MPESA STATEMENTS
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+<ion-card *ngFor="let statement of statements">
+  <ion-card-header  color="primary">
+   {{statement.address}}
+  </ion-card-header>
+  <ion-card-content>
+     <p>{{statement.body}} </p>
+  </ion-card-content>
+  </ion-card>
+
+  <ion-fab bottom right>
+    <button (click)="saveStatement()" ion-fab mini><ion-icon name="cloud-upload"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

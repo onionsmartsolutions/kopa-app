@@ -1,0 +1,73 @@
+
+
+<ion-content  padding class="register-bg">
+
+  <ion-img  class="page-logo center" width="150" height="150" src='assets/logo.png'></ion-img>
+ <form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+   <ion-list>
+
+   
+    <ion-row>
+    <ion-col >
+
+
+     <ion-item no-lines  class="item-transparent">
+      <ion-label  floating style="color:white"><ion-icon name="contact" padding-right></ion-icon> First Name
+  </ion-label> 
+           <ion-input  type="text"   formControlName="first_name"></ion-input></ion-item>
+
+        <ion-item no-lines class="item-transparent"*ngIf="registerForm.controls['first_name'].errors && registerForm.controls['first_name'].dirty ">
+                <p class="error-msg">Please enter a valid First Name.</p>
+            </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item no-lines class="item-transparent">
+        <ion-label  floating style="color:white"><ion-icon name="contact" padding-right></ion-icon> Last Name </ion-label> 
+             <ion-input  type="text"   formControlName="last_name"></ion-input></ion-item>
+
+         <ion-item no-lines class="item-transparent"*ngIf="registerForm.controls['last_name'].errors && registerForm.controls['last_name'].dirty ">
+          <p class="error-msg">Please enter a valid Last Name.</p>
+      </ion-item>
+    </ion-col>
+    </ion-row>
+
+      <ion-item class="item-transparent">
+        <ion-label  floating style="color:white"><ion-icon name="card" padding-right></ion-icon> National ID  </ion-label> 
+         <ion-input  type="number"  formControlName="national_id"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-transparent">
+        <ion-label  floating style="color:white"><ion-icon name="mail" padding-right></ion-icon> Email </ion-label> 
+         <ion-input  type="email"  formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-transparent">
+        <ion-label  floating style="color:white"><ion-icon name="call"  disabled="true" padding-right></ion-icon> Phone Number </ion-label> 
+         <ion-input   type="text"  formControlName="phone_no"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-transparent">
+        <ion-label  floating style="color:white"><ion-icon name="map" padding-right></ion-icon> Residence </ion-label> 
+         <ion-input  type="text"  formControlName="residence"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-transparent">
+        <ion-label  floating style="color:white"><ion-icon name="lock" padding-right></ion-icon>Create a Password </ion-label> 
+         <ion-input  type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+        <ion-item class="item-transparent">
+        <ion-label  floating style="color:white"><ion-icon name="lock" padding-right></ion-icon>Confirm Password </ion-label> 
+         <ion-input  type="password" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+      <ion-item margin-bottom class="item-transparent" no-lines></ion-item>
+      <button type="submit" class="btn-primary"  [disabled]="!registerForm.valid" padding margin-top  ion-button full round>SIGN UP</button>
+<ion-row margin-top>
+  <ion-col>
+      <ion-item  class="item-transparent" no-lines>
+        <ion-label text-center text-uppercase color="white" (click)="login()"> Have an account ?  <span class="text-secondary">Sign in...</span> </ion-label> 
+      </ion-item></ion-col>
+</ion-row>
+   </ion-list>
+ </form>
+</ion-content>

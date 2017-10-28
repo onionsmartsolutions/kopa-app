@@ -1,0 +1,34 @@
+
+
+<ion-content padding class="login-bg">
+<ion-img  class="page-logo center" width="150" height="150" src='assets/logo.png'></ion-img>
+ <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+   <ion-list>
+      <ion-item   class="item-transparent">
+         <ion-label  floating style="color:white"><ion-icon  name="mail" padding-right></ion-icon> Email </ion-label> 
+         <ion-input  type="email" formControlName="userEmail"></ion-input>
+      </ion-item>
+
+      <ion-item class="item-transparent ion-label">
+        <ion-label  floating style="color:white"><ion-icon name="lock" padding-right></ion-icon> Password </ion-label> 
+         <ion-input  type="password" formControlName="userPassword"></ion-input> 
+      </ion-item>
+
+      <ion-item class="item-transparent" no-lines>
+         <ion-label text-right  color="light" (click)="forgot()"> Forgot Password ?</ion-label>   
+      </ion-item>
+
+
+      <ion-item  class="item-transparent" no-lines></ion-item>
+      <button type="submit"  class="btn-primary" [disabled]="!loginForm.valid"  padding margin-top  ion-button full round style="color:#fff">LOGIN</button>
+
+ 
+       <ion-item margin-top class="item-transparent" no-lines>
+        
+        <ion-label text-center text-uppercase color="white" (click)="register()"> Are you new ? <span class="text-secondary">Register Here...</span> </ion-label> 
+      </ion-item>
+
+   </ion-list>
+ </form>
+</ion-content>
+ 

@@ -1,0 +1,23 @@
+<ion-menu id="menu" [content]="content" >
+<ion-content  style="background:url('assets/pattern.png')" >
+  <ion-grid>
+    <ion-list no-lines>
+      <button  menuClose solid="false"  ion-item class="transparent"  *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon color="light" padding-right name="{{p.icon}}"></ion-icon>
+        <span class="white">{{p.title}} </span>
+      </button>
+
+      <button  menuClose solid="false"  ion-item class="transparent" (click)="signOut()">
+        <ion-icon color="light" padding-right name="exit"></ion-icon>
+        <span class="white">Sign Out </span>
+      </button>
+
+    </ion-list>
+    </ion-grid>
+    <ion-footer><ion-label  color="light" text-center>Copyright © Kopa 2017</ion-label></ion-footer>
+  </ion-content>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

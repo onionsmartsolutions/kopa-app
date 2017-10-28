@@ -1,0 +1,8 @@
+{
+  "name": "Kopesha",
+  "app_id": "737218d1",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

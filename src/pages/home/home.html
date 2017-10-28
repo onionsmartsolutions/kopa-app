@@ -1,0 +1,46 @@
+<ion-header style="background:url('assets/pattern.png')">
+
+  <ion-navbar transparent color="light">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+     <ion-buttons end>
+
+     <button color="light" ion-button round  icon-end>
+  Help
+  <ion-icon name="help-circle"></ion-icon>
+</button>
+    </ion-buttons>
+    <ion-title>Kopa Loans</ion-title>
+  </ion-navbar>
+
+  <ion-grid  color="primary">
+      <ion-label  large>
+     <h1 style="font-size: xx-large;color:white;text-align: center;"> Hi User </h1>
+      </ion-label>
+  </ion-grid>
+ 
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+    <ion-col *ngFor="let card of cards">
+       <ion-card color="primary" (click)="navtoPage(card)">
+      
+        <ion-card-content  align-items-center>
+           <ion-icon name="{{card.icon}}"></ion-icon>
+        </ion-card-content>
+          <ion-card-header>
+             {{card.title}}
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    
+  </ion-row>
+  </ion-grid>
+  
+</ion-content>
+
+

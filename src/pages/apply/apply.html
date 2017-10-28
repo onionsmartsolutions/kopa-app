@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar color="primary">
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title color="secondary" >
+      Apply for a Loan
+    </ion-title>
+
+  </ion-navbar>
+</ion-header>
+  <ion-content>
+ 
+
+ <form [formGroup]="applyForm" (ngSubmit)="applyLoan()">
+   
+<ion-card >
+  <ion-card-header color="primary">
+    LOAN AMOUNT
+  </ion-card-header>
+  <ion-card-content >
+    <h1 class="large-text" >Ksh {{loan_amount}}</h1>
+
+  <ion-item no-lines>     
+       <ion-range (ionChange)="onInputChange($event)" min="{{loan_min}}" max="{{loan_limit}}" no-padding step="1" [(ngModel)]="loan_amount" name="loanAmount" formControlName="loanAmount">
+       <ion-label text-uppercase color="secondary" class="bold"  range-left>
+       Ksh.{{loan_min}}
+       </ion-label>
+       <ion-label text-uppercase color="secondary" class="bold" range-right>
+       Ksh.{{loan_limit}}
+       </ion-label>     
+       </ion-range>
+     </ion-item>
+  </ion-card-content>
+<hr>
+   <ion-card-header color="primary" margin-top>
+    AMOUNT TO PAY BACK
+  </ion-card-header>
+
+  <ion-card-content>
+  <h1 name="loanBalance" class="large-text" >Ksh {{loan_balance}}</h1>
+
+      <ion-input type="text" style="visibility: hidden;" formControlName="loanBalance" name="loan_balance" [(ngModel)]="loan_balance"></ion-input>
+
+  </ion-card-content>
+<hr>
+  <ion-card-header color="primary" margin-top>
+    DATE DUE
+  </ion-card-header>
+
+  <ion-card-content>
+  <ion-datetime  disabled  displayFormat="DD-MM-YYYY"  formControlName="dueDate"></ion-datetime>
+  </ion-card-content>
+
+</ion-card>
+
+<ion-item>
+  <ion-row>
+    <ion-col>
+      <button color="danger" type="button" (click)="goBack()" ion-button full round>Cancel</button>
+    </ion-col>
+    <ion-col>
+       <button color="primary" type="submit" ion-button full round [disabled]="!applyForm.valid">Submit</button>
+    </ion-col>
+  </ion-row>
+
+  </ion-item>
+
+ </form>
+</ion-content>

@@ -1,0 +1,35 @@
+page-profile {
+
+	.profile-bg{
+		background-color: #282f3c;
+	}
+
+	.item-transparent{
+		background: transparent;
+		color: white;
+	}
+	.round{
+		border-radius: 15px;
+		border: solid white;
+	}
+	.center{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  
+    flex-direction: row;
+ 
+    flex-wrap: nowrap;
+   
+    justify-content: center;
+  
+    align-content: stretch;
+   
+    align-items: center;
+}
+
+	
+
+}
