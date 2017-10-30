@@ -34,12 +34,7 @@ export class ActivationPage {
    
   }
   activateAccount(){
-     let response = this.mpesaService.requestPayment();
-     response.subscribe(data=>{
-        console.log(data);
-     },error=>{
-        console.log(error);
-     });
+    
   }
 
 

@@ -24,12 +24,12 @@ export class StatementsPage {
     public userService : UserService,
     public utils : Utilities) 
   {
-    this.userService.getCurrentUser().then(data=>{
-       this.user= data;
-   }); 
-    if(this.utils.isMobilePlatform()){
-        this.checkPermissions();
-    }
+      this.userService.getCurrentUser().then(data=>{
+           this.user = data;
+      }); 
+      if(this.utils.isMobilePlatform()){
+          this.checkPermissions();
+      }
   }
 
    getSMS(){
@@ -51,14 +51,32 @@ export class StatementsPage {
 
   saveStatement(){
     if(this.statements!=null){
-      this.statementService.createStatement(this.user['idusers'],this.statements).subscribe(data=>{
-        this.utils.showMessage('Statements uploaded successfully');
-      },error=>{
-        this.utils.showMessage('Error uploading statements');
-      });
+ 
+       this.utils.createLoader('Uploading Statements...');
+       let count = 0;
+       this.statements.forEach(function(statement) 
+       { 
+          let statementDetails = {
+            "user" : this.user.id,
+            "details" : statement.body,
+          };
+          this.statementService.createStatement(statementDetails).subscribe(data=>{
+             
+             if(count==this.statements.length-1){
+               this.utils.stopLoader();
+               this.utils.showMessage('Statements uploaded successfully');
+             }
+             else{
+                count++;
+             }
+
+          });
+       });
+   
+        
     }
     else{
-      this.utils.showMessage('No statements to upload');
+      this.utils.showMessage('No statements found');
     }
       
   }

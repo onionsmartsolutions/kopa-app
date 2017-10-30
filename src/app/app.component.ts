@@ -24,7 +24,7 @@ import { Diagnostic } from '@ionic-native/diagnostic';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-   rootPage: any = HomePage;
+   rootPage: any = LoginPage;
    sim_info : any;
    pages: Array<{title: string,icon :string, component: any}>;
 
@@ -50,7 +50,7 @@ export class MyApp {
          }
         this.statusBar.styleDefault();
         this.splashScreen.hide();
-        this.authUser();
+        this.rootPage = LoginPage;
     });
   }
 
@@ -84,14 +84,6 @@ export class MyApp {
     
   }
 
-  authUser(){
-    this.firebaseAuth.authState.subscribe(auth => {
-      if(!auth)
-        this.rootPage = HomePage;
-      else
-        this.rootPage = HomePage;
-    });
-  }
 
   getSMS(){
     this.utils.readSMS();

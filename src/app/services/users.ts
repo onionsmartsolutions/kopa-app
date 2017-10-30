@@ -9,26 +9,29 @@ import { Storage } from '@ionic/storage';
 export class UserService {
 
     private USER_URL="/users/";
-
+    private request_options : any;
     constructor(
       public storage : Storage,
       public utils: Utilities,
       public firebaseAuth : AngularFireAuth,
       public http:Http) {
-
+      this.request_options = this.utils.getDefaultRequestOptions();
     }
 
     getUser(value){
-       return this.http.get(this.utils.getBaseUrl()+this.USER_URL+'/'+value+'/');     
+       return this.http.get(this.utils.getBaseUrl()+this.USER_URL+value+'/');     
+    }
+
+    getUserByEmail(email){
+       return this.http.get(this.utils.getBaseUrl()+this.USER_URL+'?email='+email);     
     }
 
     createUser(data){
-        return this.http.post(this.utils.getBaseUrl()+this.USER_URL, data,{
-      });
+        return this.http.post(this.utils.getBaseUrl()+this.USER_URL, data, this.request_options);
     }
 
     updateUser(user_id,data){
-      return this.http.put(this.utils.getBaseUrl()+this.USER_URL+'?'+'user_id='+user_id, data);  
+      return this.http.put(this.utils.getBaseUrl()+this.USER_URL+user_id+"/", data,this.request_options);  
     }
 
     storeCurrentUser(value){

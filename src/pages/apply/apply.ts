@@ -40,30 +40,28 @@ export class ApplyPage {
    applyLoan(){
 
       this.utils.createLoader('Applying Loan...');
-      
       let loanData=this.applyForm.value;
-      console.log()
       let loanDetails={ 
-                       user_id : this.user['idusers'],
-                       creationDate : this.utils.getDate(),
+                       user : this.user['id'],
+                       applicationDate : this.utils.getDate(),
                        dueDate : this.utils.getDatePlus(30),
-                       loanAmount : loanData['loanAmount'],
+                       loan_amount : loanData['loanAmount'],
                        status : 'PENDING',
-                       loanBalance : this.loan_balance
+                       loan_balance : this.loan_balance
                       };
       this.loanService.createLoan(loanDetails).subscribe(data=>{
-        this.utils.stopLoader();
-        this.utils.showDialog('Successful','Once Approved funds will be disbursed within 24hrs');
-        this.navCtrl.setRoot(HomePage);    
+          this.utils.stopLoader();
+          this.utils.showDialog('Successful','Once Approved funds will be disbursed within 24hrs');
+          this.navCtrl.setRoot(HomePage);    
       },error=>{
-        this.utils.stopLoader();
-         this.utils.showMessage('Loan Application Error.Please try again');
+           this.utils.stopLoader();
+           this.utils.showMessage('Loan Application Error.Please try again');
       });
    }
 
   getUserLoanLimit(){
      this.userService.getCurrentUser().then(data=>{
-         this.user= data;
+         this.user = data;
          this.loan_limit = data['loan_limit'];
      });
   }

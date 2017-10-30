@@ -1,6 +1,16 @@
 <ion-menu id="menu" [content]="content" >
+
+      <ion-header>
+      <ion-label padding color="light"  text-xl-start >
+        <strong>KOPA LOANS</strong>
+      </ion-label>
+    </ion-header>
 <ion-content  style="background:url('assets/pattern.png')" >
+
+
+
   <ion-grid>
+    
     <ion-list no-lines>
       <button  menuClose solid="false"  ion-item class="transparent"  *ngFor="let p of pages" (click)="openPage(p)">
         <ion-icon color="light" padding-right name="{{p.icon}}"></ion-icon>

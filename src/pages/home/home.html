@@ -11,12 +11,12 @@
   <ion-icon name="help-circle"></ion-icon>
 </button>
     </ion-buttons>
-    <ion-title>Kopa Loans</ion-title>
+    <ion-title color="light">Hi {{first_name}} </ion-title>
   </ion-navbar>
 
   <ion-grid  color="primary">
       <ion-label  large>
-     <h1 style="font-size: xx-large;color:white;text-align: center;"> Hi User </h1>
+        <h1 style="font-size:xx-large;color:white;text-align: center;">Ksh {{loan_limit}}</h1>
       </ion-label>
   </ion-grid>
  
@@ -25,8 +25,8 @@
 
 <ion-content>
   <ion-grid>
-    <ion-row>
-    <ion-col *ngFor="let card of cards">
+    <ion-row *ngFor="let card of cards">
+
        <ion-card color="primary" (click)="navtoPage(card)">
       
         <ion-card-content  align-items-center>
@@ -36,7 +36,7 @@
              {{card.title}}
         </ion-card-header>
       </ion-card>
-    </ion-col>
+
     
   </ion-row>
   </ion-grid>

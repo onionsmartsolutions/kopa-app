@@ -1,0 +1,25 @@
+[2K[G> cordova platform add androidapp --save
+[2K[GUsing cordova-fetch for androidapp
+[2K[G
+[2K[GError: Failed to fetch platform androidapp
+Probably this is either a connection problem, or platform spec is incorrect.
+Check your connection and platform name/version/URL.
+Error: cmd: Command failed with exit code 1 Error output:
+npm ERR! Windows_NT 10.0.15063
+npm ERR! argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "androidapp" "--save"
+npm ERR! node v6.10.3
+npm ERR! npm  v3.10.10
+npm ERR! code E404
+
+npm ERR! 404 Registry returned 404 for GET on https://registry.npmjs.org/androidapp
+npm ERR! 404 
+npm ERR! 404  'androidapp' is not in the npm registry.
+npm ERR! 404 You should bug the author to publish it (or use the name yourself!)
+npm ERR! 404 
+npm ERR! 404 Note that you can also install from a
+npm ERR! 404 tarball, folder, http url, or git url.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     C:\xampp\htdocs\kopa\app\node_modules\npm-debug.log
+[2K[G
+[2K[G[ERROR] Exception: 

@@ -1,7 +1,7 @@
 import { ToastController,AlertController,LoadingController, Platform } from 'ionic-angular';
 import { FormControl } from "@angular/forms";
 import { Injectable } from '@angular/core';
-import { Http,Headers } from '@angular/http';
+import { Http,Headers,RequestOptions } from '@angular/http';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Storage } from '@ionic/storage';
 
@@ -10,7 +10,8 @@ declare var window: any;
 
 export class Utilities {
 
-    private BASE_URL="https://egzqgiwmsg.localtunnel.me/app";
+    private BASE_URL="https://kopaloans.herokuapp.com/app";
+    private AUTH_TOKEN ="Token a970f58e41315547ba645eb2fe177a4e32b932cf";
     private loader : any;
     public smsList : any;
     public response;
@@ -42,7 +43,7 @@ export class Utilities {
    showMessage(messageIn){
        let toast = this.toastCtrl.create({
         message: messageIn,
-        duration: 3000
+        duration: 5000
       });
       toast.present();
    }
@@ -119,6 +120,15 @@ export class Utilities {
       return true;
     }
     return false;
+  }
+
+  getDefaultRequestOptions(){
+    let headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.AUTH_TOKEN);
+    let options = new RequestOptions({headers: headers});
+    return options;
   }
 
 }

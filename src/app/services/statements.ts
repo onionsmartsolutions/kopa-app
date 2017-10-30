@@ -8,16 +8,16 @@ import { AngularFireAuth } from 'angularfire2/auth';
 @Injectable()
 export class StatementService {
 
-    private STATEMENT_URL="/api/statements";
-
+    private STATEMENT_URL="/statements/";
+    private request_options : any;
     constructor(
     	        public http:Http,
     	        public utils :Utilities) {
-       
+         this.request_options = this.utils.getDefaultRequestOptions();
     }
 
-    createStatement(user_id,data){
-        return this.http.post(this.utils.getBaseUrl()+this.STATEMENT_URL, data);   
+    createStatement(data){
+        return this.http.post(this.utils.getBaseUrl()+this.STATEMENT_URL, data, this.request_options);   
     }
 
     getStatement(user_id){

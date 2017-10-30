@@ -20,7 +20,9 @@ export class ProfilePage {
   phone_no : string ;
   residence : string ;
   email : string;
-
+  status : string ;
+  device_id : any ;
+  loan_limit : any;
 
   constructor(public navCtrl: NavController,public userService: UserService,public utils: Utilities
    ) 
@@ -33,13 +35,16 @@ export class ProfilePage {
       }
 
   setFormData(data){
-    this.user_id = data ['id'];
-    this.first_name = data ['first_name'];
-    this.last_name = data ['last_name'];
-    this.email = data ['email'];
-    this.national_id = data ['national_id'];
-    this.phone_no = data ['phone_no'];
-    this.residence= data ['residence'];
+    this.user_id = data.id;
+    this.first_name = data.first_name;
+    this.last_name = data.last_name;
+    this.email = data.email;
+    this.national_id = data.national_id;
+    this.phone_no = data.phone_no;
+    this.residence= data.residence; 
+    this.status = data.status;
+    this.loan_limit = data.loan_limit;
+    this.device_id = data.device_id;
   }
 
 
@@ -53,18 +58,20 @@ export class ProfilePage {
         'national_id' : this.national_id,
         'phone_no' : this.phone_no,
         'residence' : this.residence,
+        'status' : this.status,
+        'loan_limit' : this.loan_limit,
+        'device_id' :this.device_id
       };
 
-           let response=this.userService.updateUser(this.user_id,userDetails);
-           response.subscribe(data => {
-           let user=data.json();
-           this.userService.storeCurrentUser(user);
+     let response=this.userService.updateUser(this.user_id,userDetails);
+     response.map(res => res.json()).subscribe(data => {
+         let user = data;
+         this.userService.storeCurrentUser(user);
            this.utils.stopLoader();
            this.utils.showMessage('Profile Updated');
-
       }, error => {
            this.utils.stopLoader();
-           this.utils.showMessage('Error updating profile');
+           this.utils.showMessage(error);
       });
 
    }

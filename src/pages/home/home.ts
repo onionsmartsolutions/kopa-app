@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav,NavController,Platform,AlertController } from 'ionic-angular';
+import { Nav,NavController,NavParams,Platform,AlertController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Http,Response } from '@angular/http';
 import { Utilities } from '../../app/utilities';
@@ -19,12 +19,14 @@ export class HomePage {
   @ViewChild(Nav) nav: Nav;
   title : any;
   loan_limit : any;
+  first_name : any;
   user : any;
 
   cards: Array<{title: string,icon :string, component: any}>;
 
   constructor(
     public navCtrl: NavController,
+    public navParams : NavParams,
     public platform:Platform,
     public alertCtrl : AlertController,
     public userService: UserService,
@@ -32,18 +34,19 @@ export class HomePage {
     public http:Http,
     public utils : Utilities,
     public storage:Storage) {
+
+
+
     this.userService.getCurrentUser().then((value) => {
     	if(value!=null){
-        let response=this.userService.getUser(value['id']);
-        response.subscribe(data=>{
-            this.user=data.json();
-            this.checkStatus(this.user['status']);
-            this.title= "Welcome, "+this.user['full_name'];
-            this.loan_limit = this.user['loan_limit'];
-        }); 
+          this.user  =  value ;
+          this.first_name = value.first_name;
+          this.loan_limit = value.loan_limit;
+          this.checkStatus(value.status);
+
     	}
     	else{
-    		this.loan_limit = "N/A";
+
     	}
         
     });

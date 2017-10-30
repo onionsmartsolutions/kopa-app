@@ -21,7 +21,7 @@ export class PaymentsPage {
               public utils : Utilities
            ) 
   {
-      let loan= navParams.get('loan');
+      let loan = navParams.get('loan');
       this.settlementService.getSettlements(loan['loan_id']).subscribe(data=>{
            this.settlements =  data.json();
       })

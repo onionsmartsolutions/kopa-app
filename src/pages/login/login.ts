@@ -30,6 +30,14 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public formBuilder :FormBuilder) {
 
+
+
+    this.userService.getCurrentUser().then((value) => {
+      if(value!=null){
+          this.loginForm.controls['userEmail'].setValue(value.email);
+      } 
+    });
+
     this.loginForm  = this.formBuilder.group({
 
       userEmail: ['', Validators.compose([Validators.required,this.utils.isEmail])],
@@ -50,16 +58,18 @@ export class LoginPage {
          'password': this.loginForm.controls['userPassword'].value
       };
 
-      let response=this.userService.getUser('?email='+details.email);
-      response.subscribe(data => {
-          var length = Object.keys(data).length;
-              if(length>0){
-                let user=data.json();
+      let response=this.userService.getUserByEmail(details.email);
+      response.map(res => res.json()).subscribe(data => {
+
+            var length = Object.keys(data).length;
+            if(length>0){
+                let user = data[0];
                 this.validateUserWithDevice(user);
-              }
-              else{
-                this.utils.showMessage('User does not exist');
-              }
+            }
+            else{
+              this.utils.stopLoader();
+              this.utils.showMessage('User with that email does not exist');
+            }
           },error => {
             this.utils.showMessage(error);
       });
@@ -113,7 +123,7 @@ export class LoginPage {
                 .then(auth => {
                     this.utils.stopLoader();
                     this.userService.storeCurrentUser(user);
-                    this.navCtrl.push(HomePage, {}, {animate: true, direction: 'forward'});
+                    this.navCtrl.setRoot(HomePage);
                 })
                 .catch(err => {
                    this.utils.stopLoader();
@@ -123,7 +133,7 @@ export class LoginPage {
             else{
               this.utils.stopLoader();
               this.utils.showMessage('The Mobile Device or Phone Number does not match with your account details');
-            }
+           }
         }
       });
    }

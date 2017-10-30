@@ -29,7 +29,7 @@ export class LoansPage {
   {
       this.userService.getCurrentUser().then((data) => {
         if(data!=null){
-           this.getAllLoans(data ['idusers']);
+           this.getAllLoans(data['id']);
         }
       },error=>{
         this.utils.showMessage('No Loans Found');
